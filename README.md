@@ -10,8 +10,8 @@ To get the server running locally:
 Routes, which you can use:
 * **GET**  `/books` - Listing all books
 * **GET**   `/books/bookId` - Getting a book by id
-* **POST**  `/books` - Creating a book
-* **PUT**  `/books/bookId` - Updating a book
+* **POST**  `/books` - Creating a book. Please, add `{ "title": "YOUR TITLE HERE" }` body
+* **PUT**  `/books/bookId` - Updating a book. Please, add `{ "title": "YOUR NEW TITLE HERE" }` body
 * **GET**  `/books/bookId/reviews` - Listening all reviews of a book
-* **POST** `/books/bookId/reviews` - Creating review to a book
+* **POST** `/books/bookId/reviews` - Creating review to a book. Please, add `{ "comment": "YOUR COMMENT HERE" }` body for request
 * **DELETE**  `/books/bookId/reviews/reviewId` - Deleting review in a book

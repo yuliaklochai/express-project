@@ -12,4 +12,16 @@ const checkIfReviewExists = (req, res, next) => {
   next();
 };
 
-module.exports = checkIfReviewExists;
+const checkIfCommentExists = (req, res, next) => {
+  const comment = req.body.comment;
+  if (!comment) {
+    return next({ status: 400, message: "Body should contain comment field." });
+  }
+  req.comment = comment;
+  next();
+};
+
+module.exports = {
+    checkIfReviewExists,
+    checkIfCommentExists
+};

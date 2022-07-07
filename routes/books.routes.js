@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 const booksControllers = require("../controllers/books.controllers");
-const checkIfBookExists = require("../middleware/checkBooks.middleware");
+const checkBooks = require("../middleware/checkBooks.middleware");
 const reviewsRouter = require("./reviews.routes");
 
-router.use("/:bookId", checkIfBookExists);
+router.use("/:bookId", checkBooks.checkIfBookExists);
 
 router.use(
   "/:bookId/reviews",
@@ -19,7 +19,7 @@ router.use(
 
 router.get("/", booksControllers.getBooks);
 router.get("/:bookId", booksControllers.getBookById);
-router.post("/", booksControllers.addBook);
-router.put("/:bookId", booksControllers.updateBookById);
+router.post("/", checkBooks.checkIfTitleExist, booksControllers.addBook);
+router.put("/:bookId", checkBooks.checkIfTitleExist, booksControllers.updateBookById);
 
 module.exports = router;

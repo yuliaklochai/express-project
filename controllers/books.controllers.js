@@ -10,7 +10,7 @@ const getBooks = (req, res, next) => {
 
 const addBook = (req, res, next) => {
   try {
-    const bookTitle = req.body.title;
+    const bookTitle = req.title;
     const book = {
       id: bookList.length + 1,
       title: bookTitle,
@@ -35,7 +35,7 @@ const getBookById = (req, res, next) => {
 
 const updateBookById = (req, res, next) => {
   try {
-    const bookTitle = req.body.title;
+    const bookTitle = req.title;
     req.book.title = bookTitle;
     res.json(req.book);
   } catch (error) {

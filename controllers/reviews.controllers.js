@@ -6,15 +6,15 @@ const getReviews = (req, res, next) => {
     if (!reviewsList.length) {
       return next({ status: 404, message: "This book hasn't reviews." });
     }
-    res.json();
+    res.json(reviewsList);
   } catch (error) {
     next(error);
   }
 };
 
-const addReview = (req, res) => {
+const addReview = (req, res, next) => {
   try {
-    const comment = req.body.comment;
+    const comment = req.comment;
     const newReview = { id: ++req.book.reviewsCounter, comment: comment };
     for (let bookItem of bookList) {
       if (bookItem.id === req.book.id) {
@@ -27,7 +27,7 @@ const addReview = (req, res) => {
   }
 };
 
-const deleteReview = (req, res) => {
+const deleteReview = (req, res, next) => {
   try {
     const reviewIndex = req.reviewIndex;
     const book = req.book;

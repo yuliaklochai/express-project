@@ -10,4 +10,16 @@ const checkIfBookExists = (req, res, next) => {
   next();
 };
 
-module.exports = checkIfBookExists;
+const checkIfTitleExist = (req, res, next) => {
+  const bookTitle = req.body.title;
+  if (!bookTitle) {
+    return next({ status: 400, message: "Body should contain title field." });
+  }
+  req.title = bookTitle
+  next()
+};
+
+module.exports = {
+  checkIfBookExists,
+  checkIfTitleExist
+};
